@@ -48,7 +48,7 @@ const citiesAtoJ = (arr) => {
   // Solution code here...
  
   let r = new RegExp(/\b[A-J]/g);
-  return str.match(r);
+  return arr.match(r);
 };
 
 /* ------------------------------------------------------------------------------------------------

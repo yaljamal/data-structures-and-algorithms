@@ -79,7 +79,10 @@ a Boolean indicating whether all those strings contain ":)".
 
 const allHappy = (arr) => {
     // Solution code here...
-
+    return arr.reduce((acc,e)=>{
+        acc=acc&e.includes(':)');
+        return Boolean(acc);
+    },Boolean(1))
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -105,9 +108,10 @@ Write a function named findEvery that takes in an array of strings, along with a
 
 const findEvery = (arr, target) => {
     // Solution code here...
-    for(let i = 0 ; i <arr.length;i++){
-        return arr.includes(target);
-    }
+    return arr.reduce((acc,e)=>{
+        acc=acc&e.includes(target);
+        return Boolean(acc);
+    },Boolean(1))
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -129,6 +133,11 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 
 const unenrollBrook = (arr) => {
     // Solution code here...
+    return arr.map(e=>{
+        return e.filter(val=>{
+            return !val.includes('Brook');
+        })
+    })
 };
 
 /* ------------------------------------------------------------------------------------------------

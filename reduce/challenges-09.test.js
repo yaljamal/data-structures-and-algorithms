@@ -27,55 +27,56 @@ the names of the characters.
 ------------------------------------------------------------------------------------------------ */
 
 let starWarsData = [{
-    name: 'Luke Skywalker',
-    height: '172',
-    mass: '77',
-    hair_color: 'blond',
-    skin_color: 'fair',
-    eye_color: 'blue',
-    birth_year: '19BBY',
-    gender: 'male',
-},
-{
-    name: 'C-3PO',
-    height: '167',
-    mass: '75',
-    hair_color: 'n/a',
-    skin_color: 'gold',
-    eye_color: 'yellow',
-    birth_year: '112BBY',
-    gender: 'n/a'
-},
-{
-    name: 'R2-D2',
-    height: '96',
-    mass: '32',
-    hair_color: 'n/a',
-    skin_color: 'white, blue',
-    eye_color: 'red',
-    birth_year: '33BBY',
-    gender: 'n/a'
-},
-{
-    name: 'Darth Vader',
-    height: '202',
-    mass: '136',
-    hair_color: 'none',
-    skin_color: 'white',
-    eye_color: 'yellow',
-    birth_year: '41.9BBY',
-    gender: 'male'
-},
-{
-    name: 'Leia Organa',
-    height: '150',
-    mass: '49',
-    hair_color: 'brown',
-    skin_color: 'light',
-    eye_color: 'brown',
-    birth_year: '19BBY',
-    gender: 'female'
-}];
+        name: 'Luke Skywalker',
+        height: '172',
+        mass: '77',
+        hair_color: 'blond',
+        skin_color: 'fair',
+        eye_color: 'blue',
+        birth_year: '19BBY',
+        gender: 'male',
+    },
+    {
+        name: 'C-3PO',
+        height: '167',
+        mass: '75',
+        hair_color: 'n/a',
+        skin_color: 'gold',
+        eye_color: 'yellow',
+        birth_year: '112BBY',
+        gender: 'n/a'
+    },
+    {
+        name: 'R2-D2',
+        height: '96',
+        mass: '32',
+        hair_color: 'n/a',
+        skin_color: 'white, blue',
+        eye_color: 'red',
+        birth_year: '33BBY',
+        gender: 'n/a'
+    },
+    {
+        name: 'Darth Vader',
+        height: '202',
+        mass: '136',
+        hair_color: 'none',
+        skin_color: 'white',
+        eye_color: 'yellow',
+        birth_year: '41.9BBY',
+        gender: 'male'
+    },
+    {
+        name: 'Leia Organa',
+        height: '150',
+        mass: '49',
+        hair_color: 'brown',
+        skin_color: 'light',
+        eye_color: 'brown',
+        birth_year: '19BBY',
+        gender: 'female'
+    }
+];
 
 const returnNames = (arr) => {
     // Solution code here...
@@ -97,7 +98,7 @@ const reversedString = (str) => {
     // Solution code here...
     let strLen = str.split('');
     return strLen.reduce((acc, val, ind) => {
-        
+
         return val + acc;
     }, [])
 
@@ -110,8 +111,7 @@ Write a function named countNumberOfChildren that, given the array of characters
  below, uses reduce to return the total number of children in the data set.
 ------------------------------------------------------------------------------------------------ */
 
-const characters = [
-    {
+const characters = [{
         name: 'Eddard',
         spouse: 'Catelyn',
         children: ['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon'],
@@ -220,8 +220,7 @@ If the input array does not have a stat with that specific name, the function sh
 ------------------------------------------------------------------------------------------------ */
 
 const snorlaxData = {
-    stats: [
-        {
+    stats: [{
             stat: {
                 url: 'https://pokeapi.co/api/v2/stat/6/',
                 name: 'speed',
@@ -264,7 +263,8 @@ const extractStat = (statName, arr) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
-Write a function named extractChildren that, given the array of characters from challenge 4, accomplishes the following:
+Write a function named extractChildren that, given the array of characters from challenge 4,
+ accomplishes the following:
 
 1) Uses filter to return an array of the characters that contain the letter 'a' in their name
 
@@ -273,6 +273,13 @@ Write a function named extractChildren that, given the array of characters from 
 
 const extractChildren = (arr) => {
     // Solution code here...
+    return arr.filter(val => val.name.includes('a')).reduce((acc, val) => {
+        if (val.children) {
+            acc = [...acc, ...val.children];
+        }
+        return acc;
+    }, []);
+
 };
 
 /* ------------------------------------------------------------------------------------------------

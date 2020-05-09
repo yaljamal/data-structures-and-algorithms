@@ -95,7 +95,7 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 const evenOdd = (arr) => {
     // Solution code here...
     let newarr = arr.map(val => {
-        if (typeof (val) === 'string') {
+        if (typeof(val) === 'string') {
             return 'N/A';
         } else if (val % 2 === 0) {
             return 'even';
@@ -118,8 +118,7 @@ extractAbilities(snorlaxAbilities.abilities)
 ------------------------------------------------------------------------------------------------ */
 
 const snorlaxAbilities = {
-    abilities: [
-        {
+    abilities: [{
             slot: 3,
             is_hidden: true,
             ability: {
@@ -150,10 +149,10 @@ const snorlaxAbilities = {
 
 const extractAbilities = (arr) => {
     // Solution code here...
-    let newarr=arr.map(val=>{
+    let newarr = arr.map(val => {
         return val.ability.name;
-      });
-      return newarr;
+    });
+    return newarr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -170,8 +169,7 @@ Here is an example of a single array element: { name: 'speed', total: 35 }
 ------------------------------------------------------------------------------------------------ */
 
 const snorlaxStats = {
-    stats: [
-        {
+    stats: [{
             stat: {
                 url: 'https://pokeapi.co/api/v2/stat/6/',
                 name: 'speed',
@@ -202,12 +200,12 @@ const snorlaxStats = {
 
 const extractStats = (arr) => {
     // Solution code here...
-]
-            let newarr=arr.map(val=>{
-             var obj={name:val.stat.name , total:val.effort+val.baseStat};
-             return obj;
-            });
-            return newarr;
+
+    let newarr = arr.map(val => {
+        var obj = { name: val.stat.name, total: val.effort + val.baseStat };
+        return obj;
+    });
+    return newarr;
 };
 
 /* ------------------------------------------------------------------------------------------------

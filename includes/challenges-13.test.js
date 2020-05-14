@@ -79,10 +79,10 @@ a Boolean indicating whether all those strings contain ":)".
 
 const allHappy = (arr) => {
     // Solution code here...
-    return arr.reduce((acc,e)=>{
-        acc=acc&e.includes(':)');
+    return arr.reduce((acc, e) => {
+        acc = acc & e.includes(':)');
         return Boolean(acc);
-    },Boolean(1))
+    }, Boolean(1))
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -94,9 +94,9 @@ Return an array containing only those strings from the original array that conta
 
 const findAnything = (arr, target) => {
     // Solution code here...
-return arr.filter(val=>{
-    return val.includes(target);
-})
+    return arr.filter(val => {
+        return val.includes(target);
+    })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -108,10 +108,10 @@ Write a function named findEvery that takes in an array of strings, along with a
 
 const findEvery = (arr, target) => {
     // Solution code here...
-    return arr.reduce((acc,e)=>{
-        acc=acc&e.includes(target);
+    return arr.reduce((acc, e) => {
+        acc = acc & e.includes(target);
         return Boolean(acc);
-    },Boolean(1))
+    }, Boolean(1))
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,8 +133,8 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 
 const unenrollBrook = (arr) => {
     // Solution code here...
-    return arr.map(e=>{
-        return e.filter(val=>{
+    return arr.map(e => {
+        return e.filter(val => {
             return !val.includes('Brook');
         })
     })
@@ -143,11 +143,14 @@ const unenrollBrook = (arr) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
 
-Write a function named sortByDay that takes in an array of strings, each of which represents an event's day and time.
+Write a function named sortByDay that takes in an array of strings, each of which represents 
+an event's day and time.
 
-Return a two-dimensional array that organizes those strings based on the day on which they occur. For example, all events on Monday are in the first array, all events on Tuesday are in the second array, etc.
+Return a two-dimensional array that organizes those strings based on the day on which they occur.
+ For example, all events on Monday are in the first array, all events on Tuesday are in the second array, etc.
 
-If an event takes place on multiple days (i.e. "Dancing on Mondays and Tuesdays"), it should appear in both arrays.
+If an event takes place on multiple days (i.e. "Dancing on Mondays and Tuesdays"), 
+it should appear in both arrays.
 
 For example, ['Tuesday', 'Monday', 'Wednesday and Thursday', 'Tuesday 2', 'Thursday'] returns
 [
@@ -165,6 +168,24 @@ const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sat
 
 const sortByDay = (arr) => {
     // Solution code here...
+    let newArr = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+    ];
+
+    daysOfWeek.forEach((element, idx) => {
+        arr.forEach(e => {
+            if (e.includes(element)) {
+                newArr[idx].push(e);
+            }
+        });
+    });
+    return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -177,6 +198,9 @@ For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 
 const characterByIndex = (arr) => {
     // Solution code here...
+    return arr.map((e, idx) => {
+        return e.charAt(idx);
+    })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -271,7 +295,15 @@ describe('Testing challenge 8', () => {
             ['Jennifer'],
             ['Nicholas', 'Sam', 'Scott', 'Vinicio']
         ]);
-        expect(unenrollBrook([['Brook', 'person'], [], ['person', 'person', 'Brook']])).toStrictEqual([['person'], [], ['person', 'person']]);
+        expect(unenrollBrook([
+            ['Brook', 'person'],
+            [],
+            ['person', 'person', 'Brook']
+        ])).toStrictEqual([
+            ['person'],
+            [],
+            ['person', 'person']
+        ]);
         expect(unenrollBrook([])).toStrictEqual([]);
     });
 });
